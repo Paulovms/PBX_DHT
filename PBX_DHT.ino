@@ -10,16 +10,13 @@
 #include<stdlib.h>
 
 //-------------------------------------------------------------------------------
-const char* ssid = "Casa_AP";
-const char* password = "porteira";
+const char* ssid = "---------------";
+const char* password = "-----------------";
 WiFiClient client; //define 'client' as object
 #define DHTPIN 13     // what pin the sensor is connected to
 #define DHTTYPE DHT21   // DHT 22  (AM2302)
 float temp, umid, hic; //
-const char* temp2 = "32,5";
 boolean lastConnected = false;  
-
-char postmsg[100];
 DHT dht(DHTPIN, DHTTYPE, 30);
 //------------------------------------------------------------------------------
 void setup() {
@@ -89,7 +86,7 @@ void sendToPushingBox(char T[]){ //T[]
   delay(100);
   if (client.connect("api.pushingbox.com", 80)) {
     Serial.println("connected");
-    client.print("GET /pushingbox?devid=v43C1E21EED51606&tempData=");
+    client.print("GET /pushingbox?devid=-----------------&tempData=");
     client.print(T);
     client.println(" HTTP/1.1");
     client.println("Host: api.pushingbox.com");
